@@ -4,6 +4,7 @@
   "description": "tests",
   "main": "sum.js",
 
+
   "bin": {
     "TutorAllocationSystem": "coveralls.js"
   },
