@@ -1,6 +1,25 @@
 language: node_js
+
+os:
+  - linux
+
 node_js:
-  - 'stable'
-install: npm install
-script: npm test
-after_success: npm run coverage
+  - node
+cache: npm
+
+install:
+  - npm ci
+script:
+  - npm test
+  - npm run coveralls
+branches:
+  only:
+  - master
+
+##deploy:
+  #provider: pages
+  #cleanup: true
+  #local_dir: build
+  #token: $GITHUB_TOKEN
+#on:
+#  branch: master
