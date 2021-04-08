@@ -1,0 +1,57 @@
+
+.Topic{
+margin-top: 100px;
+margin-left: 500px;
+margin-right: 500px;
+width: 400px
+font-size: 20px;
+font-style: italic;
+font-weight: bolder;
+}
+
+.lay1{
+
+background-color: #126180;
+
+}
+
+.lay2{
+margin-top: 300px;
+background-color: teal;
+height: 130px;
+margin-bottom: 30px;
+}
+
+.ad{
+
+width: 300px;
+height: 30px;
+margin-top: 10px;
+margin-bottom: 10px;
+margin-left: 500px;
+margin-right: 500px;
+font-style: italic;
+font-weight: bold;
+}
+
+.app{
+width: 300px;
+height: 30px;
+margin-bottom: 10px;
+margin-top: 0px;
+margin-left: 500px;
+margin-right: 500px;
+font-style: italic;
+font-weight: bold;
+}
+
+.log{
+width: 300px;
+height: 30px;
+font-style: italic;
+margin-bottom: 30px;
+margin-top: 0px;
+margin-left: 500px;
+margin-right: 500px;
+font-weight: bold;
+}
