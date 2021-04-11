@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>WitsLink</title>
+<title>TutorAllocationSystem</title>
 <meta name="description" content="">
 <meta name="author" content="">
 
@@ -27,14 +27,14 @@
 
 
 </head>
-<body id="page-top" data-spy="scroll" data-target=".navbar-fixed-top" onload="preload()">
+<body id="page-top" data-spy="scroll" data-target=".navbar-fixed-top">
 <!-- Navigation-->
 <nav id="menu" class="navbar navbar-default navbar-fixed-top">
   <div class="container">
     <!-- Brand and toggle get grouped for better mobile display -->
     <div class="navbar-header">
       <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1"> <span class="sr-only">Toggle navigation</span> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span> </button>
-      <a class="navbar-brand page-scroll" href="index.html">Alloctaion System</a>
+      <a class="navbar-brand page-scroll" href="index.html">Allocation System</a>
       <div class="phone"><span>STUDENT</span>Plug</div>
     </div>
 
@@ -59,19 +59,6 @@
           <p>Please ensure you fill all attributes of the the form below</p>
         </div>
 
-        <form id="DetailsForm" >
-            <div class="col-md-12">
-              <div class="form-group">
-
-            <div class="col-md-10" >
-
-              <div class="contact-item" id="jobName">
-                <input id="JOB_ID" hidden name="JobID">
-             </div>
-             <!--<script type="text/javascript" src="js/showJobTitle.js"></script>-->
-
-                </div>
-                </div>
                 <!-- Name -->
             <div class="col-md-8" >
               <ul>
@@ -82,89 +69,128 @@
                     <h4>Application required Info </h4>
                   </div>
               </li>
-              <form >
+              <form id="DetailsForm" >
+
+                <!--
+                <li>
+                    <div class="form-group">
+                    <p> Student Number</p>
+                      <input name="studentNo" type="text" id="studentno" class="form-control" placeholder="Student number" required="required">
+                    <p class="help-block text-danger"></p>
+                    </div>
+                </li>
 
                 <li>
-                  <p>Select Year(s) you would like to tutor</p>
-                <div class="dropdown">
-                  <select class="dropbtn" id="Race" name="race" required="required">
-                  <div class="dropdown-content">
-                    <option value="" selected disabled>Select option</option>
-                    <option class="dropdown-content" value="Black">1st year</option>
-                    <option class="dropdown-content" value="White">2nd year</option>
-                    <option class="dropdown-content "value="Indian">3rd Year</option>
-                    <option class="dropdown-content " value="Other">1st and 2nd year</option>
-                    <option class="dropdown-content " value="Other">2nd and 3rd year</option>
-                    <option class="dropdown-content " value="Other">1st and 3rd year</option>
-                  </div>
-                  </select>
+                    <p>Email address</p>
+                    <div class="form-group">
+                      <input name="emailAddress" type="email" id="email" class="form-control" placeholder="Email address" required="required">
+                    <p class="help-block text-danger"></p>
+                    </div>
+                </li>
+
+                <li>
+                    <p>First Name</p>
+                    <div class="form-group">
+                      <input name="firstName" type="text" id="Fname" class="form-control" placeholder="First Name" required>
+
+                    </div>
+                </li>
+
+                <li>
+                    <p> Last Name</p>
+                    <div class="form-group">
+                      <input name="lastName" type="text" id="Lname" class="form-control" placeholder="Last Name" required="required">
+                    <p class="help-block text-danger"></p>
+                    </div>
+                </li>
+              -->
+
+
+                <li>
+
+                <p>Select Your prefered Modules(which ones would you like to tutor) and enter the mark you got for that/those module(s):</p>
+
+                <h3>1st Year Modules</h3>
+                <li>
+
+                <li>
+                <div class="checkbox">
+                <label><input type="checkbox" onclick="Basic();" id="BCO" name="bco" value="Basic Computer Organisation"><p>Basic Computer Organisation</p></label>
+                      <div class="form-group" id="area1" style="display:none;" >
+                          <input name="bcoMark" type="number" id="Lname" class="form-control"  min="0" max="100" required="required">
+                      </div>
                 </div>
                 </li>
 
-                  <br><br>
+                <br>
+
                 <li>
-                <p>Select Your prefered Modules(which ones would you like to tutor) by entering the mark you got for that/those module(s):</p>
-
-                <p>Computational and Applied Mathematics</p>
-                <div class="form-group">
-                  <input name="lName" type="number" id="Lname" class="form-control" min="0"  required="required">
-                <p class="help-block text-danger"></p>
+                <div class="checkbox">
+                <label><input type="checkbox" onclick="Into();" id="IAP" name="iap" value="Introduction to Algorithms and Programming"><p>Introduction to Algorithms and Programming</p></label>
+                      <div class="form-group" id="area2" style="display:none;" >
+                          <input name="lName" type="number" id="Lname" class="form-control"  min="0" max="100" required="required">
+                      </div>
                 </div>
+                </li>
 
-                <p>Basic Computer Organisation</p>
-                <div class="form-group">
-                  <input name="lName" type="number" id="Lname" class="form-control"  min="0" required="required">
-                <p class="help-block text-danger"></p>
+                <li>
+                <div class="checkbox">
+                <label><input type="checkbox" onclick="Disc();" id="DCS" name="iap" value="Discrete Computational Structures"><p> Discrete Computational Structures</p></label>
+                      <div class="form-group" id="area3" style="display:none;" >
+                          <input name="lName" type="number" id="Lname" class="form-control"  min="0" max="100" required="required">
+                      </div>
                 </div>
+                </li>
 
-                <p>Introduction to Data Structures and Algorithms</p>
-                <div class="form-group">
-                  <input name="lName" type="number" id="Lname" class="form-control"  min="0" required="required">
-                <p class="help-block text-danger"></p>
+                <li>
+                <div class="checkbox">
+                <label><input type="checkbox" onclick="Introduction();" id="IDSA" name="idsa" value="Introduction to Data Structure and Algorithms"><p>Introduction to Data Structure and Algorithms</p></label>
+                      <div class="form-group" id="area4" style="display:none;" >
+                          <input name="lName" type="number" id="Lname" class="form-control"  min="0" max="100" required="required">
+                      </div>
                 </div>
-
-                <p>Introduction to Algorithms and Programming</p>
-                <div class="form-group">
-                  <input name="lName" type="number" id="Lname" class="form-control"  min="0" required="required">
-                <p class="help-block text-danger"></p>
-                </div>
-
-                <p>Discrete Computational Structures</p>
-                <div class="form-group">
-                  <input name="lName" type="number" id="Lname" class="form-control" min="0"  required="required">
-                <p class="help-block text-danger"></p>
-                </div>
-
-                <!--<input type="checkbox" id="vehicle1" name="vehicle1" value="Bike">
-                <label for="vehicle1">Computational and Applied Mathematics</label>
-                <input type="number" id="quantity" name="quantity">
-                <label for="vehicle2">Basic Computer Organisation</label>
-                <input type="number" id="quantity" name="quantity">
-                <br><br>
-                <label for="vehicle3"> Introduction to Data Structures and Algorithms </label><br><br>
-                <label for="vehicle3"> Introduction to Algorithms and Programming     </label><br><br>
-                <label for="vehicle3">Discrete Computational Structures               </label><br><br>-->
+                </li>
               </li>
-              <br>
-<li>
-    <p> Select/enter number of Modules you would like to tutor in 1st Semester(enter zero if none)</p>
-    <div class="form-group">
-      <input name="lName" type="number" id="Lname" class="form-control" min="0"  required="required">
-    <p class="help-block text-danger"></p>
-    </div>
-</li>
+              <br><br><br><br>
+
+              <h3>2nd Year Modules</h3>
+
+              <li>
+                <li>
+                <div class="checkbox">
+                <label><input type="checkbox" onclick="DatabaseF();" id="DBFA" name="dbfa" value="Database Fundamentals II"><p>Basic Computer Organisation</p></label>
+                      <div class="form-group" id="area5" style="display:none;" >
+                          <input name="dbfaMark" type="number" id="Lname" class="form-control"  min="0" max="100" required="required">
+                      </div>
+                </div>
+                </li>
+
+
+
+              </li>
+
+            <br><br><br><br><br>
+
+
+                <li>
+                    <p> Select/enter number of Modules you would like to tutor in 1st Semester(enter zero if none)</p>
+                    <div class="form-group">
+                        <input name="#modulesSem1" type="number" id="Lname" class="form-control" min="0" required="required">
+                        <p class="help-block text-danger"></p>
+                    </div>
+                </li>
 <br>
 <li>
     <p> Select/enter number of Modules you would like to tutor in 2nd Semester(enter zero if none)</p>
     <div class="form-group">
-      <input name="lName" type="number" id="Lname" class="form-control"  min="0" required="required">
+      <input name="#modulesSem2" type="number" id="Lname" class="form-control"  min="0" required="required">
     <p class="help-block text-danger"></p>
     </div>
 </li>
 <br>
   <li>
       <div class="contact-item">
-        <h4>Required document </h4>
+        <h4>Required document(s) </h4>
       </div>
   </li>
 <p>Upload your transcript</p>
@@ -182,18 +208,10 @@
 
   </select>
 
-
-                <div class="form-group">
-                    <textarea name="motivation" id="motivation" class="form-control" rows="4" placeholder="Short Motivation" maxlength="1000"required></textarea>
-                    <p class="help-block text-danger"></p>
-                </div>
-
-          </form>
-
-          <div class="col-md-6">
+              <div class="col-md-6">
               <br>
               <div id="submit application"></div>
-              <button onclick="load()" type="submit" id="submitApplication" class="btn btn-custom btn-lg" value="Submit">Submit Application</button>
+              <button type="submit" id="submitApplication" class="btn btn-custom btn-lg" value="Submit">Submit Application</button>
             </div>
 
         </ul>
@@ -201,30 +219,30 @@
       </div>
     </form>
     </div>
-            <script src="js/StudentPreload.js"></script>
-</form>
+            <!--<script src="js/StudentPreload.js"></script>-->
 
-        <script type="text/javascript">
-          let myform = document.getElementById('DetailsForm');
-            myform.addEventListener('submit', (e)=>{
-              e.preventDefault();
+            <script type="text/javascript">
+                let myform = document.getElementById('DetailsForm');
+                  myform.addEventListener('submit', (e)=>{
+                    e.preventDefault();
 
-              let xhr = new XMLHttpRequest();
-                 xhr.open("POST","https://lamp.ms.wits.ac.za/~s1879990/studentInfo.php");
+                    let xhr = new XMLHttpRequest();
+                       xhr.open("POST","https://lamp.ms.wits.ac.za/~s1431410/apply.php");
 
-                 xhr.onload = function (){
-                   if (this.responseText){
-                     alert("Application successful");
-                     window.location.assign("upload.html");
-                   }else{
-                     alert("Application was not successful! Please try again.")
-                     window.location.assign("apply.html");
-                   }
-                 };
-                  xhr.send(new FormData(myform));
+                       xhr.onload = function (){
+                         //alert(this.responseText);
+                         if (this.responseText){
+                           alert("Application successfully submitted");
+                           //window.location.assign("AdminLogin.html");
+                         }else{
+                           alert("Registration was not successful! Please try again.")
+                           window.location.assign("apply.html");
+                         }
+                       };
+                        xhr.send(new FormData(myform));
 
-            });
-        </script>
+                  });
+              </script>
 
         <script src="//code.jquery.com/jquery.min.js"></script>
         <script src="js/bootstrap-msg.js"></script>
@@ -238,10 +256,10 @@
 <!-- Footer Section -->
 <div id="footer">
   <div class="container text-center">
-    <p>&copy; 2020 WITSLINK. Design by ELtech <a href="http://www.templatewire.com" rel="nofollow">School Project</a></p>
+    <p>&copy; 2021 TutotAllocationSystem. Designed by TechLution <a href="http://www.templatewire.com" rel="nofollow">School Project</a></p>
   </div>
 </div>
-
+<script src="js/checkboxClick.js"></script>
 <script type="text/javascript" src="js/jquery.1.11.1.js"></script>
 <script type="text/javascript" src="js/bootstrap.js"></script>
 <script type="text/javascript" src="js/SmoothScroll.js"></script>
