@@ -29,3 +29,25 @@ function Introduction() {
         document.getElementById('area4').style.display = 'none';
     }
 }
+function DatabaseF() {
+    if (document.getElementById('DBFA').checked) {
+        document.getElementById('area4').style.display = 'block';
+    } else {
+        document.getElementById('area4').style.display = 'none';
+    }
+}
+
+function MobileC() {
+    if (document.getElementById('IDSA').checked) {
+        document.getElementById('area4').style.display = 'block';
+    } else {
+        document.getElementById('area4').style.display = 'none';
+    }
+}
+function ComNet() {
+    if (document.getElementById('IDSA').checked) {
+        document.getElementById('area4').style.display = 'block';
+    } else {
+        document.getElementById('area4').style.display = 'none';
+    }
+}
