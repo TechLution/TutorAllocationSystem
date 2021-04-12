@@ -17,7 +17,7 @@
 <link rel="stylesheet" type="text/css"  href="css/bootstrap.css">
 <link rel="stylesheet" type="text/css" href="fonts/font-awesome/css/font-awesome.css">
 
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
 
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
@@ -260,14 +260,14 @@
 
                     let xhr = new XMLHttpRequest();
                        xhr.open("POST","https://lamp.ms.wits.ac.za/~s1431410/apply.php?");
-
+                       alert("none");
                        xhr.onload = function (){
-                         //alert(this.responseText);
+                         alert(this.responseText);
                          if (this.responseText){
                            alert("Application successfully submitted");
                            //window.location.assign("AdminLogin.html");
                          }else{
-                           alert("Registration was not successful! Please try again.")
+                           alert("Registration was not successful! Please try again.");
                            window.location.assign("apply.html");
                          }
                        };
@@ -287,7 +287,7 @@
   </div>
 </div>
 <script src="js/checkboxClick.js"></script>
-<script src="//code.jquery.com/jquery.min.js"></script>
+<!--<script src="//code.jquery.com/jquery.min.js"></script>-->
 <script src="js/bootstrap-msg.js"></script>
 <script type="text/javascript" src="js/jquery.1.11.1.js"></script>
 <script type="text/javascript" src="js/bootstrap.js"></script>
