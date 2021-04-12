@@ -36,18 +36,25 @@ function DatabaseF() {
         document.getElementById('area5').style.display = 'none';
     }
 }
-
-function MobileC() {
-    if (document.getElementById('IDSA').checked) {
-        document.getElementById('area4').style.display = 'block';
+function ComNet() {
+    if (document.getElementById('CN').checked) {
+        document.getElementById('area6').style.display = 'block';
     } else {
-        document.getElementById('area4').style.display = 'none';
+        document.getElementById('area6').style.display = 'none';
     }
 }
-function ComNet() {
-    if (document.getElementById('IDSA').checked) {
-        document.getElementById('area4').style.display = 'block';
+
+function MobileC() {
+    if (document.getElementById('MC').checked) {
+        document.getElementById('area7').style.display = 'block';
     } else {
-        document.getElementById('area4').style.display = 'none';
+        document.getElementById('area7').style.display = 'none';
+    }
+}
+function Analysis() {
+    if (document.getElementById('AA').checked) {
+        document.getElementById('area8').style.display = 'block';
+    } else {
+        document.getElementById('area8').style.display = 'none';
     }
 }
