@@ -31,9 +31,9 @@ function Introduction() {
 }
 function DatabaseF() {
     if (document.getElementById('DBFA').checked) {
-        document.getElementById('area4').style.display = 'block';
+        document.getElementById('area5').style.display = 'block';
     } else {
-        document.getElementById('area4').style.display = 'none';
+        document.getElementById('area5').style.display = 'none';
     }
 }
 

@@ -17,6 +17,12 @@
 <link rel="stylesheet" type="text/css"  href="css/bootstrap.css">
 <link rel="stylesheet" type="text/css" href="fonts/font-awesome/css/font-awesome.css">
 
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
 <!-- Stylesheet-->
 <link rel="stylesheet" type="text/css" href="css/style.css">
 <link rel="stylesheet" type="text/css" href="css/nivo-lightbox/nivo-lightbox.css">
@@ -61,16 +67,13 @@
 
                 <!-- Name -->
             <div class="col-md-8" >
-              <ul>
-
-
               <li>
                   <div class="contact-item">
                     <h4>Application required Info </h4>
                   </div>
               </li>
-              <form id="DetailsForm" >
-
+              <form id="DetailsForm" method="post" onclick="">
+              <ul>
                 <!--
                 <li>
                     <div class="form-group">
@@ -105,13 +108,12 @@
                 </li>
               -->
 
-
                 <li>
 
                 <p>Select Your prefered Modules(which ones would you like to tutor) and enter the mark you got for that/those module(s):</p>
 
                 <h3>1st Year Modules</h3>
-                <li>
+              <li>
 
                 <li>
                 <div class="checkbox">
@@ -164,60 +166,56 @@
                       </div>
                 </div>
                 </li>
-
-
-
               </li>
-
-            <br><br><br><br><br>
+              <br><br><br><br><br>
 
 
                 <li>
                     <p> Select/enter number of Modules you would like to tutor in 1st Semester(enter zero if none)</p>
                     <div class="form-group">
-                        <input name="#modulesSem1" type="number" id="Lname" class="form-control" min="0" required="required">
+                        <input name="numModulesSem1" type="number" id="Lname" class="form-control" min="0" required="required">
                         <p class="help-block text-danger"></p>
                     </div>
                 </li>
-<br>
-<li>
-    <p> Select/enter number of Modules you would like to tutor in 2nd Semester(enter zero if none)</p>
-    <div class="form-group">
-      <input name="#modulesSem2" type="number" id="Lname" class="form-control"  min="0" required="required">
-    <p class="help-block text-danger"></p>
-    </div>
-</li>
-<br>
-  <li>
-      <div class="contact-item">
-        <h4>Required document(s) </h4>
-      </div>
-  </li>
-<p>Upload your transcript</p>
-            <table width="350" border="0" cellpadding="1" cellspacing="1" class="box">
-              <tr>
-                <td width="246">
-                  <input type="hidden" name="MAX_FILE_SIZE" value="2000000000" required>
-                  <input name="transcript" type="file" id="userfile" required>
-                </td>
-              </tr>
-            </table>
-</li>
+                <br>
+                <li>
+                    <p> Select/enter number of Modules you would like to tutor in 2nd Semester(enter zero if none)</p>
+                    <div class="form-group">
+                      <input name="numModulesSem2" type="number" id="Lname" class="form-control"  min="0" required="required">
+                    <p class="help-block text-danger"></p>
+                    </div>
+                </li>
+                <br>
 
-<br>
+                <li>
+                    <div class="contact-item">
+                      <h4>Required document(s) </h4>
+                    </div>
+                </li>
 
-  </select>
 
-              <div class="col-md-6">
-              <br>
-              <div id="submit application"></div>
-              <button type="submit" id="submitApplication" class="btn btn-custom btn-lg" value="Submit">Submit Application</button>
+                <p>Upload your transcript</p>
+                <table width="350" border="0" cellpadding="1" cellspacing="1" class="box">
+                  <tr>
+                    <td width="246">
+                      <input type="hidden" name="MAX_FILE_SIZE" value="2000000000" required>
+                      <input name="transcript" type="file" id="userfile" required>
+                    </td>
+                  </tr>
+                </table>
+          </li>
+
+          <br>
+
+            <div class="col-md-6">
+              <button onclick="" type="submit" id="submitApplication" class="btn btn-custom btn-lg" value="Submit">Submit Application</button>
             </div>
 
         </ul>
+          </form>
         </div>
       </div>
-    </form>
+
     </div>
             <!--<script src="js/StudentPreload.js"></script>-->
 
@@ -227,7 +225,7 @@
                     e.preventDefault();
 
                     let xhr = new XMLHttpRequest();
-                       xhr.open("POST","https://lamp.ms.wits.ac.za/~s1431410/apply.php");
+                       xhr.open("POST","https://lamp.ms.wits.ac.za/~s1431410/apply.php?");
 
                        xhr.onload = function (){
                          //alert(this.responseText);
@@ -243,11 +241,6 @@
 
                   });
               </script>
-
-        <script src="//code.jquery.com/jquery.min.js"></script>
-        <script src="js/bootstrap-msg.js"></script>
-
-
     </div>
   </div>
 </div>
@@ -260,12 +253,12 @@
   </div>
 </div>
 <script src="js/checkboxClick.js"></script>
+<script src="//code.jquery.com/jquery.min.js"></script>
+<script src="js/bootstrap-msg.js"></script>
 <script type="text/javascript" src="js/jquery.1.11.1.js"></script>
 <script type="text/javascript" src="js/bootstrap.js"></script>
 <script type="text/javascript" src="js/SmoothScroll.js"></script>
 <script type="text/javascript" src="js/nivo-lightbox.js"></script>
-<!--<script type="text/javascript" src="js/jqBootstrapValidation.js"></script>
-<script type="text/javascript" src="js/contact_me.js"></script>
-<script type="text/javascript" src="js/main.js"></script>-->
+
 </body>
 </html>
