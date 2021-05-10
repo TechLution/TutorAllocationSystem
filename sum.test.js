@@ -1,3 +1,3 @@
-const sum = require('./sum');
-test('1+2=3',()=>
-{expect(sum(1,2)).toBe(3);});
+const Basic = require('./Basic');
+test('When checkbox is not checked',()=>
+{expect(Basic()).toBe('');});
