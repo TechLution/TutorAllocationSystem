@@ -46,6 +46,15 @@ foreach ($records as $record) {
         <header>
             <h1>TUTOR ALLOCATION SYSTEM</h1>
         </header>
+          <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul id="Nav" class="nav navbar-nav navbar-right">
+       <li id="hrlgn"><a href="CreateCourse.html" class="page-scroll">Create Course</a></li>
+
+
+
+      </ul>
+    </div>
+        
         <div class="lists">
             <?php foreach ($courses as $course => $students) : ?>
                 <div class="list">
