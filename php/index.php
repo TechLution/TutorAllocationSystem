@@ -9,10 +9,10 @@ $handler = new PDO("mysql:host=127.0.0.1;dbname=d1431410", 's1431410', 'ICTPass2
 
 //SQL to execute
 $sql = <<<MLS
-SELECT 
+SELECT
     application.course_code AS ccode,
     applicant.applicant_firstName AS sname
-FROM 
+FROM
     application
 INNER JOIN
      applicant ON application.applicant_studentNo=applicant.applicant_studentNo
@@ -24,7 +24,7 @@ $records = $handler->query($sql)->fetchAll();
 //2D array to hold course=>students
 $courses = [];
 
-//programatically group applicants by course 
+//programatically group applicants by course
 foreach ($records as $record) {
     $courses[$record['ccode']][] = $record['sname'];
 }

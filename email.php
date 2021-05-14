@@ -13,7 +13,7 @@ if(isset($_POST['submit'])){
 }
 */
 
-$to =   '1875489@students.wits.ac.za'; // email to send to.
+$to =   '1875489z@students.wits.ac.za'; // email to send to.
 $subject = 'Tutoring Form Application';
 $message = "Hi, you have entered the following details in the application form:\n
             Name              : Steven \n
