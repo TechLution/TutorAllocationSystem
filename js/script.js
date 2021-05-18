@@ -3,7 +3,7 @@ const students = document.querySelectorAll(".list-item");
 const courses = document.querySelectorAll(".list");
 
 //add listeners to courses
-for (let course of courses) {
+/*for (let course of courses) {
   //make course a valid drop target
   course.addEventListener("dragover", function (event) {
     event.preventDefault();
@@ -32,7 +32,7 @@ for (let course of courses) {
     //remove focus from course
     this.classList.remove("drop-target-course");
   });
-}
+}*/
 
 //add listeners to students
 for (let student of students) {
