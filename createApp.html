@@ -111,7 +111,46 @@
                 <br>
                 <p>Select Your prefered Modules(which ones would you like to tutor) and enter the mark you got for that/those module(s):</p>
 
-                <h3>1st Year Modules</h3>
+                
+                <script type="text/javascript">
+                    var ajax = new XMLHttpRequest();
+                    //ajax.open("GET", "https://lamp.ms.wits.ac.za/~s1431410/courses.php?", false);
+         
+                    ajax.onreadystatechange = function(){
+                         if (this.readyState == 4 && this.status == 200){
+                             var data = "";
+                             var data = JSON.parse(this.responseText);
+                         //    console.log(data);
+                           //  document.getElementById("demo").innerHTML =;
+                             var count=Object.keys(data).length;
+                             var courses=new Array();
+         
+                             for (var prop in data) {
+                                 courses.push(data[prop]);
+                               }
+         
+                             var i;
+                             for (i = 0; i < count; i++) {
+         
+                             var ul = document.getElementById("dynamic-list");
+                             var li = document.createElement("li");
+                             var checkbox = document.createElement("input");
+                             checkbox.type = "checkbox";
+                             var right="course"+i.toString(10);
+                             checkbox.name = "name";
+                           //  checkbox.value = courses[i];
+                             li.appendChild(checkbox);
+         
+                             li.appendChild( document.createTextNode(courses[i]) );
+                             ul.appendChild(li);
+                           }
+                           }
+                    };
+                    ajax.open("GET", "https://lamp.ms.wits.ac.za/~s1431410/courses.php?", true);
+                    ajax.send();
+         
+                 </script>
+                <!--<h3>1st Year Modules</h3>
 
 
                 <li>
@@ -193,7 +232,7 @@
               </li>
 
 
-              <br><br><br><br><br>
+              <br><br><br><br><br> -->
 
 
                 <li>
