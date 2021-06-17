@@ -1,0 +1,479 @@
+<?php
+$options = array(
+    PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC
+);
+//create connection to database
+$handler = new PDO("mysql:host=localhost;dbname=d1431410", 's1431410', 'ICTPass2102', $options);
+
+//SQL to execute
+$sql = <<<MLS
+SELECT
+    applicant.applicant_firstName AS sname,
+    applicant.applicant_ID AS s_ID,
+    course.course_name AS ccode,
+    applicant.applicant_studentNo AS snum,
+    application.application_mark AS smark,
+    application.application_status AS status
+
+FROM
+    application
+INNER JOIN
+     applicant ON application.applicant_ID=applicant.applicant_ID
+INNER JOIN
+     course ON application.course_ID=course.course_ID
+
+MLS;
+
+//fetch all records in applicants table
+$records = $handler->query($sql)->fetchAll();
+
+//2D array to hold course=>students
+$courses = [];
+$count = [];
+//programatically group applicants by course
+foreach ($records as $record) {
+    $courses[$record['ccode']][] = $record['sname']."  ".$record['s_ID']."  ".$record['snum']."  ".$record['smark']."  ".$record['status'];
+
+    if(isset($count[$record['s_ID']])){
+        if(strtolower($record['status']) == 'Accepted')
+        $count[$record['s_ID']]++;
+
+      }
+}
+
+?>
+
+
+<!DOCTYPE html>
+<html>
+
+<head>
+
+<style>
+body {font-family: Arial, Helvetica, sans-serif;}
+
+/* The Modal (background) */
+.modal {
+display: none; /* Hidden by default */
+position: fixed; /* Stay in place */
+z-index: 1; /* Sit on top */
+padding-top: 100px; /* Location of the box */
+
+left: 0;
+ top: 0;
+ width: 100%; /* Full width */
+ height: 100%; /* Full height */
+ overflow: auto; /* Enable scroll if needed */
+ background-color: blue; /* Fallback color */
+ background-color: blue; /* Black w/ opacity */
+}
+
+/* Modal Content */
+.modal-content {
+ background-color: blue;
+ margin: auto;
+ padding: 20px;
+ border: 1px solid #888;
+ width: 80%;
+}
+
+.dropdownPosts {
+
+  display: inline-block;
+}
+
+.drop-down-menu-button{
+   display: inline-block;
+   cursor: pointer;
+   float: right;
+   width: 24px;
+   height: 24px;
+   cursor: pointer;
+   background: no-repeat;
+   background-image: url("./ic_menu.svg");
+}
+
+.drop-down-menu-button:hover .dropdownPost-content{
+   display: block;
+}
+
+.createCourseBtn {
+background-color: white;
+
+position: right;
+font-weight: bold;
+    color: black;
+    font-size: 20px;
+width: 150px;
+    border: solid;
+    cursor: pointer;
+border-radius: 5px;
+}
+
+.LogOutBtn {
+background-color: white;
+position: left;
+font-weight: bold;
+    color: black;
+    font-size: 20px;
+width: 150px;
+    border: solid;
+    cursor: pointer;
+border-radius: 5px;
+
+}
+
+.dropdownbtn {
+    position: absolute;
+    color: white;
+    font-size: 6px;
+    border: none;
+    cursor: pointer;
+    margin-top: 6%;
+    margin-right: 30%;
+}
+
+/* The Close Button */
+.close {
+  color: #aaaaaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+  color: #000;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.dropdownPost-content {
+    display: none;
+    margin-top: 22px;
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 160px;
+    overflow: auto;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+    right: 8px;
+}
+.dropdownPost-content a {
+    color: black;
+
+    .dropdownPost-content a:hover {background-color: #f1f1f1}
+</style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=devide-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie-edge">
+    <title>DASHBOARD</title>
+    <link rel="stylesheet" href="Mains.css" />
+
+<script>
+    //3-DOT MENU
+    function showDropdown(){
+        document.getElementById("myDropdown").classList.toggle("show");
+    }
+    // Close the dropdown if the user clicks outside of it
+    window.onclick = function(event) {
+        if (!event.target.matches('.dropdownbtn')) {
+
+          var dropdowns = document.getElementsByClassName("dropdownPost-content");
+           var i;
+        for (i = 0; i < dropdowns.length; i++) {
+           var openDropdown = dropdowns[i];
+           if (openDropdown.classList.contains('show')) {
+             openDropdown.classList.remove('show');
+           }
+        }
+    }
+   }
+
+//Create Course
+
+   </script>
+
+
+<link rel="stylesheet" href="Mains.css" />
+   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+
+   <style>
+
+
+.dropdownPosts {
+
+    display: inline-block;
+}
+
+.title-section{
+    display: block;
+    flex-direction: row;
+color:grey;
+    align-items: center;
+}
+
+.dashboard-title{
+    display: inline-block;
+color: grey;
+}
+
+.list{
+        color:black;
+        position: relative;
+}
+
+.drop-down-menu-button{
+display: inline-block;
+cursor: pointer;
+float: right;
+width: 24px;
+height: 24px;
+cursor: pointer;
+background: no-repeat;
+background-image: url("ic_menu.svg");
+}
+
+
+.drop-down-menu-button:hover .dropdownPost-content{
+display: block;
+}
+
+.dropdownbtn {
+
+  position: absolute;
+   color: white;
+   font-size: 6px;
+   border: none;
+   cursor: pointer;
+   margin-top: 6%;
+   margin-right: 30%;
+}
+.app {
+   display: flex;
+   color: grey;
+   flex-flow: column;
+   height: 100vh;
+   width: 100vw;
+}
+
+.icons li {
+   background: none repeat scroll 0 0 #000;
+   height: 7px;
+   width: 7px;
+
+   line-height: 0;
+   list-style: none outside none;
+   margin-right: 15px;
+   margin-top: 1px;
+   vertical-align: top;
+   border-radius:50%;
+   pointer-events: auto;
+   display: inline-block;
+}
+.showRight{
+   color:#000 !important;
+   padding: 10px;
+}
+.btn-right {
+   right: 0.01em;
+}
+.dropdownPost-content {
+   display: none;
+   margin-top: 22px;
+   position: absolute;
+
+   background-color: #f9f9f9;
+  min-width: 160px;
+  overflow: auto;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+  right: 8px;
+}
+.dropdownPost-content a {
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+}
+
+
+.show {display:block;}
+
+.btn-left {
+  left: 0.4em;
+}
+
+.btn-left, .btn-right {
+    position: absolute;
+    top: 0.24em;
+}
+
+</style>
+
+
+</head>
+
+</head>
+
+<body>
+    <div class="app">
+        <header>
+            <h1>TUTOR ALLOCATION SYSTEM</h1>
+        </header>
+
+<a href="https://lamp.ms.wits.ac.za/home/s1431410/createcourse.php">
+
+  <div id="createCourse" class="createCourseBtn">
+   Create Course
+ </div>
+</a>
+
+<a href="login.html">
+ <div id="Logout" class="LogOutBtn">
+   Log Out
+ </div>
+</a>
+
+       <div class="lists">
+           <?php foreach ($courses as $course => $students) :?>
+               <div class="list">
+
+               <div class="title-section">
+                       <h3 class="dashboard-title"><?php echo $course; ?></h3>
+                       <div class="drop-down-menu-button">
+                           <!-- menu -->
+                       <div class="dropdownPost-content">
+
+                         <a href="editCourse.php">Edit course</a>
+                                                    <a href='#GenerateEmail'>Generate email</a>
+                                                    <a href='#OfferEmail'>Offer email</a>
+                                                </div>
+                                                </div>
+
+
+
+                                            </div>
+
+                                            <?php foreach ($students as $student) : ?>
+                                               <div id="<?php $pop= explode(" ",$student); echo $pop[2];?>
+
+                                                    "class="list-item" draggable="true" onClick="reply_click(this.id)"
+                                                    style = <?php if ($pop[8] == "Applied"){
+                                                            echo "background-color:gainsboro;";
+                                                    }
+                                                    else if ($pop[8] == "Accepted"){
+                                                        echo "background-color:darkseagreen;";
+                                                    }
+                                                    else if($pop[8] == "Rejected"){
+                                                     echo "background-color:firebrick;";
+
+                                                 } else {echo "background-color:orange;";}
+                                                 ?>
+                                                 >
+
+
+                                                     <?php $pop= explode(" ",$student); echo "Name: ".$pop[0];?> <br>
+                                                     <?php $pop= explode(" ",$student); echo "Student Number: ".$pop[4];?> <br>
+                                                     <?php $pop= explode(" ",$student); echo "Mark for this course: ".$pop[6];?> <br>
+                                                     <?php $pop= explode(" ",$student); echo "Status: ".$pop[8];?>
+
+
+
+                                             </div>
+                                         <?php endforeach; ?>
+                                     </div>
+                                 <?php endforeach; ?>
+                             </div>
+                           </div>
+        <!-- The Modal -->
+    <div id="myModal" class="modal">
+
+    <!-- Modal content -->
+    <div class="modal-content" style="background-color:#dcdcdc;">
+    <div class="$student">
+    <h4 class="$student"><?phpecho $student?></h4>
+            </div>
+      <span class="close">&times;</span>
+      <p id = "test"></p>
+    </div>
+
+    </div>
+        <script src="script.js"></script>
+        <script type="text/javascript">
+      var url;
+      function reply_click(clicked_id)
+      {
+        var btn = document.getElementById(clicked_id);
+
+        modal.style.display = "block";
+    var url = "https://lamp.ms.wits.ac.za/home/s1431410/PopApplicant.php?applicant_ID="+clicked_id;
+    var ajax = new XMLHttpRequest();
+    var method = "GET";
+
+    var value = true;
+
+    ajax.open(method, url ,value);
+    ajax.send();
+    ajax.onreadystatechange = function(){
+
+    if (this.readyState == 4 && this.status == 200){
+
+      var data = JSON.stringify(this.responseText);
+          data = JSON.parse(data);
+        console.log(data);
+
+        document.getElementById("test").innerHTML = data;
+        }
+     }
+
+   }
+
+ var modal = document.getElementById("myModal");
+
+// Get the <span> element that closes the modal
+ var span = document.getElementsByClassName("close")[0];
+
+
+// When the user clicks on <span> (x), close the modal
+span.onclick = function() {
+modal.style.display = "none";
+}
+
+// When the user clicks anywhere outside of the modal, close it
+window.onclick = function(event) {
+if (event.target == modal) {
+ modal.style.display = "none";
+}
+}
+function updateStatus(course_ID,applicant_ID){
+    var status = sel.options[sel.selectedIndex].text;
+
+    var url = "https://lamp.ms.wits.ac.za/home/s1431410/UpdateStatus.php?applicant_ID="+applicant_ID+"&course_ID="+course_ID+"&status="+status;
+    var ajax = new XMLHttpRequest();
+    var method = "GET";
+
+    var value = true;
+
+    ajax.open(method, url ,value);
+    ajax.send();
+    ajax.onreadystatechange = function(){
+
+    if (this.readyState == 4 && this.status == 200){
+
+      var data = JSON.stringify(this.responseText);
+          data = JSON.parse(data);
+        console.log(data);
+        modal.style.display = "none";
+        location.reload();
+
+      }
+}
+
+}
+
+
+</script>
+</body>
+
+</html>
